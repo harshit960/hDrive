@@ -2,6 +2,8 @@ import videoConversion as vc
 import fileConversion as fc
 import os
 import vidUpload as vu
+
+
 if __name__ == "__main__":
     os.system("clear")
     while True:
@@ -13,9 +15,10 @@ if __name__ == "__main__":
         os.system("clear")
         if option == 1:
             url = input("\nEnter url path:")
+            name= str(input("\nTitle of the file: "))
             print("\nProcessing . .")
-            path=fc.fileSave(url)
-            [difference,ext,exPath] = vc.binaryToVideo(fc.fileToBinary(path),path)
+            [path,extension]=fc.fileSave(url,name)
+            [difference,ext,exPath] = vc.binaryToVideo(fc.fileToBinary(path),path,extension)
             vu.VidUpload(exPath)
             os.system("clear")
             print("Data to Video conversion successfull!\n\n")

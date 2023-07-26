@@ -1,5 +1,5 @@
 import requests
-import time
+import os
 def binaryToFile(cache):
     filename = cache[0]
     binary_string = cache[1]
@@ -22,9 +22,11 @@ def fileToBinary(filename):
     return [binary,ext]
 
 
-def fileSave(file_url):
+def fileSave(file_url,title):
+    ext=file_url.split('/')[-1]
+    name, ext = os.path.splitext(file_url)
     r = requests.get(file_url, stream = True)
-    path="temp/"+str(time.time())
+    path="temp/"+str(title)+str(ext)
     with open(path,"wb") as f:
         for chunk in r.iter_content(chunk_size=1024):
        
@@ -32,5 +34,5 @@ def fileSave(file_url):
             if chunk:
                 f.write(chunk)
                 print
-    return path    
+    return [path,ext]    
 	

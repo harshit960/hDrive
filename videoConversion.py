@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-def binaryToVideo(cache,path):
+def binaryToVideo(cache,path,extension):
     binary_data = cache[0]
     ext = cache[1]
     filename = path.split("/")[-1].split(".")[-2]
@@ -21,7 +21,7 @@ def binaryToVideo(cache,path):
     fps = 30
     width = frame_size[0]
     height = frame_size[1]
-    exPath="tempVid/"+str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4"
+    exPath="tempVid/"+str(filename)+str(extension)+".mp4"
     print(str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4")
     out = cv2.VideoWriter(exPath,fourcc,fps,(width,height))
 
