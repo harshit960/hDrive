@@ -132,7 +132,7 @@ tempVid
 # Spyder project settings
 .spyderproject
 .spyproject
-
+client_secret.json
 # Rope project settings
 .ropeproject
 
