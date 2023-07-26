@@ -21,15 +21,16 @@ def binaryToVideo(cache,path):
     fps = 30
     width = frame_size[0]
     height = frame_size[1]
+    exPath="tempVid/"+str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4"
     print(str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4")
-    out = cv2.VideoWriter("tempVid/"+str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4",fourcc,fps,(width,height))
+    out = cv2.VideoWriter(exPath,fourcc,fps,(width,height))
 
     for i in range(frames):
         img = np.zeros((frame_size[0], frame_size[1], 3), dtype=np.uint8)
         img[array[i] == 1] = [255, 255, 255]
         out.write(img)
     out.release()
-    return [difference,ext]
+    return [difference,ext,exPath]
 
 
 def videoToBinary(video_path):

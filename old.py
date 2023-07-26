@@ -16,7 +16,7 @@ if __name__ == "__main__":
             url = input("\nEnter url path:")
             print("\nProcessing . .")
             path=fc.fileSave(url)
-            [difference,ext] = vc.binaryToVideo(fc.fileToBinary(path),path)
+            [difference,ext,exPath] = vc.binaryToVideo(fc.fileToBinary(path),path)
             os.system("clear")
             print("Data to Video conversion successfull!\n\n")
         elif option==2:
