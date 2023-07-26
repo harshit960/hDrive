@@ -1,7 +1,6 @@
 import videoConversion as vc
 import fileConversion as fc
 import os
-import requests
 import vidUpload as vu
 if __name__ == "__main__":
     os.system("clear")
