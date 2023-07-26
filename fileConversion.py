@@ -1,4 +1,5 @@
-
+import requests
+import time
 def binaryToFile(cache):
     filename = cache[0]
     binary_string = cache[1]
@@ -21,3 +22,13 @@ def fileToBinary(filename):
     return [binary,ext]
 
 
+def fileSave(file_url):
+    r = requests.get(file_url, stream = True)
+
+    with open("temp/"+str(time.time()),"wb") as f:
+	    for chunk in r.iter_content(chunk_size=1024):
+       
+		# writing one chunk at a time to pdf file
+		    if chunk:
+			    f.write(chunk)
+		
