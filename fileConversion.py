@@ -24,11 +24,12 @@ def fileToBinary(filename):
 
 def fileSave(file_url):
     r = requests.get(file_url, stream = True)
-
-    with open("temp/"+str(time.time()),"wb") as f:
-	    for chunk in r.iter_content(chunk_size=1024):
+    path="temp/"+str(time.time())
+    with open(path,"wb") as f:
+        for chunk in r.iter_content(chunk_size=1024):
        
 		# writing one chunk at a time to pdf file
-		    if chunk:
-			    f.write(chunk)
-		
+            if chunk:
+                f.write(chunk)
+    return path    
+	

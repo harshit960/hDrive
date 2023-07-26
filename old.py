@@ -13,10 +13,10 @@ if __name__ == "__main__":
         option = int(input())
         os.system("clear")
         if option == 1:
-            path = input("\nEnter url path:")
+            url = input("\nEnter url path:")
             print("\nProcessing . .")
-            fc.fileSave(path)
-            #[difference,ext] = vc.binaryToVideo(fc.fileToBinary(path),path)
+            path=fc.fileSave(url)
+            [difference,ext] = vc.binaryToVideo(fc.fileToBinary(path),path)
             os.system("clear")
             print("Data to Video conversion successfull!\n\n")
         elif option==2:

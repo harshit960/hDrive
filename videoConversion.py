@@ -22,7 +22,7 @@ def binaryToVideo(cache,path):
     width = frame_size[0]
     height = frame_size[1]
     print(str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4")
-    out = cv2.VideoWriter(str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4",fourcc,fps,(width,height))
+    out = cv2.VideoWriter("tempVid/"+str(filename)+"-Video-"+str(difference)+"-"+str(ext)+".mp4",fourcc,fps,(width,height))
 
     for i in range(frames):
         img = np.zeros((frame_size[0], frame_size[1], 3), dtype=np.uint8)
