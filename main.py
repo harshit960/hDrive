@@ -3,6 +3,8 @@ import fileConversion as fc
 import uploadBot as ub
 import os
 import vidUpload as vu
+import database as db
+import time
 #garbar
 
 if __name__ == "__main__":
@@ -21,7 +23,8 @@ if __name__ == "__main__":
             [path,extension]=fc.fileSave(url,name)
             [difference,ext,exPath] = vc.binaryToVideo(fc.fileToBinary(path),path,extension)
             #vu.VidUpload(exPath)
-            ub.uploadBot(exPath)
+            link = ub.uploadBot(exPath)
+            db.insertLink(name,link,str(time.ctime(time.time())))
             os.system("clear")
             print("Data to Video conversion successfull!\n\n")
         elif option==2:

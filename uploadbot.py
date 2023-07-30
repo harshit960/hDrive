@@ -37,3 +37,4 @@ def uploadBot(simp_path):
     time.sleep(5)
     bot.quit()
 
+    return link.get_attribute('href')
