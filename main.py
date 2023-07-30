@@ -1,5 +1,6 @@
 import videoConversion as vc
 import fileConversion as fc
+import uploadBot as ub
 import os
 import vidUpload as vu
 #garbar
@@ -19,7 +20,8 @@ if __name__ == "__main__":
             print("\nProcessing . .")
             [path,extension]=fc.fileSave(url,name)
             [difference,ext,exPath] = vc.binaryToVideo(fc.fileToBinary(path),path,extension)
-            vu.VidUpload(exPath)
+            #vu.VidUpload(exPath)
+            ub.uploadBot(exPath)
             os.system("clear")
             print("Data to Video conversion successfull!\n\n")
         elif option==2:
