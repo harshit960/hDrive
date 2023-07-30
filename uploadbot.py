@@ -1,7 +1,7 @@
 import time, os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.common.keys import Keys
 def uploadBot(simp_path):
     options = webdriver.ChromeOptions()
     # options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -23,9 +23,10 @@ def uploadBot(simp_path):
     #simp_path = 'tempVid/ftp.zip.mp4'
     abs_path = os.path.abspath(simp_path)
     file_input.send_keys(abs_path)
-
+    time.sleep(4)
     time.sleep(7)
-
+    link = bot.find_element(By.XPATH, '//*[@id="details"]/ytcp-video-metadata-editor-sidepanel/ytcp-video-info/div/div[2]/div[1]/div[2]/span/a')
+    print(link.get_attribute("href"))
     next_button = bot.find_element(By.XPATH, '//*[@id="next-button"]')
     for i in range(3):
         next_button.click()
