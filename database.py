@@ -1,21 +1,25 @@
 # Import module
 import sqlite3
 
-def insertLink(name,link,time):
-    # Connecting to sqlite
+def create_conn():
     conn = sqlite3.connect('links.db')
+    return conn
 
-    # Creating a cursor object using the
-    # cursor() method
+def insertLink(conn,name,link,time):
     cursor = conn.cursor()
-
-    # # Creating table
-    # table ="""CREATE TABLE LINK(NAME VARCHAR(255), LINK VARCHAR(255),
-    # TIME VARCHAR(255));"""
-    # cursor.execute(table)
-
-    # Queries to INSERT records.
     cursor.execute('''INSERT INTO LINK VALUES (?,?,?)''',(name,link,time))
+    conn.commit()
 
-    # Closing the connection
+def getLink(conn):
+    cursor = conn.cursor()
+    cursor.execute('''SELECT * FROM LINK''')
+    d=cursor.fetchall()
+    return [i for i in d]  
+
+def delLink(conn):  
+    cursor = conn.cursor()
+    cursor.execute('''DELETE FROM LINK''')
+    conn.commit()
+    
+def closeConn(conn):
     conn.close()

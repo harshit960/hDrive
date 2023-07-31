@@ -6,6 +6,8 @@ import vidUpload as vu
 import database as db
 import time
 #garbar
+import sqlite3
+
 
 if __name__ == "__main__":
     os.system("clear")
@@ -24,7 +26,10 @@ if __name__ == "__main__":
             [difference,ext,exPath] = vc.binaryToVideo(fc.fileToBinary(path),path,extension)
             #vu.VidUpload(exPath)
             link = ub.uploadBot(exPath)
-            db.insertLink(name,link,str(time.ctime(time.time())))
+            conn=db.create_conn(conn)
+            db.insertLink(conn,name,str(link),str(time.ctime(time.time())))
+            print(db.getLink(conn))
+            db.closeConn()
             os.system("clear")
             print("Data to Video conversion successfull!\n\n")
         elif option==2:
