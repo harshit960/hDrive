@@ -27,7 +27,8 @@ def uploadBot(simp_path):
         time.sleep(4)
         time.sleep(7)
         link = bot.find_element(By.XPATH, '//*[@id="details"]/ytcp-video-metadata-editor-sidepanel/ytcp-video-info/div/div[2]/div[1]/div[2]/span/a')
-        print(link.get_attribute("href"))
+        flink=link.get_attribute("href")
+        print(flink)
         next_button = bot.find_element(By.XPATH, '//*[@id="next-button"]')
         for i in range(3):
             next_button.click()
@@ -37,7 +38,7 @@ def uploadBot(simp_path):
         done_button.click()
         time.sleep(5)
         bot.quit()
-        flink=link.get_attribute('href')
-        return flink
+        
+        return [flink]
     except:
         pass
