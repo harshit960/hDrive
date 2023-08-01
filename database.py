@@ -23,3 +23,6 @@ def delLink(conn):
     
 def closeConn(conn):
     conn.close()
+
+def getData(conn):
+    conn.close()
